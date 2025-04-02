@@ -1,24 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                script {
-                    checkout scm
-                }
+                echo 'Building the project...'
             }
         }
-        stage('Show Changed Files and Content') {
+        stage('Test') {
             steps {
-                script {
-                    sh '''
-                    echo "Changed files:"
-                    git diff --name-only HEAD^ HEAD
-
-                    echo "Showing changes:"
-                    git diff HEAD^ HEAD
-                    '''
-                }
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
             }
         }
     }
