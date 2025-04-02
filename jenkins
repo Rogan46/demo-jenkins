@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'Deploying application...'
             }
-   stage('Show Changed Files and Content') {
+        stage('Show Changed Files and Content') {
             steps {
                 script {
                     sh '''
