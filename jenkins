@@ -15,6 +15,19 @@ pipeline {
             steps {
                 echo 'Deploying application...'
             }
+   stage('Show Changed Files and Content') {
+            steps {
+                script {
+                    sh '''
+                    echo "Changed files:"
+                    git diff --name-only HEAD^ HEAD
+
+                    echo "Showing changes:"
+                    git diff HEAD^ HEAD
+                    '''
+                }
+            }
+        }
         }
     }
 }
