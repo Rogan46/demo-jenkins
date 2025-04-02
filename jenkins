@@ -1,19 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building the project...'
+                git 'https://github.com/Rogan46/demo-jenkins.git'
             }
         }
-        stage('Test') {
+        stage('Show Changed Files and Content') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
+                script {
+                    sh '''
+                    echo "Modified Files:"
+                    git diff --name-only HEAD~1 HEAD
+                    echo "Content of modified files:"
+                    git diff HEAD~1 HEAD
+                    '''
+                }
             }
         }
     }
