@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Rogan46/demo-jenkins.git'
+                git branch: 'main', url: 'https://github.com/Rogan46/demo-jenkins.git'
             }
         }
         stage('Show Changed Files and Content') {
