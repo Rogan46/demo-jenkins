@@ -1,20 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building the project...'
+                script {
+                    checkout scm
+                }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
         stage('Show Changed Files and Content') {
             steps {
                 script {
@@ -27,7 +20,6 @@ pipeline {
                     '''
                 }
             }
-        }
         }
     }
 }
